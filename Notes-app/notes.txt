@@ -1,0 +1,240 @@
+const Practise=()=>
+{
+ // var fs=require('fs');
+ // fs.writeFileSync('note.text','kdnsk sdfdkknas dakn');
+// var person=function()
+// {
+//     console.log("deependra kumar");
+// }
+// person();
+
+
+// var person1=(a,b)=>
+// {
+//     console.log(`this is a ${a} +${b}=${a+b}`);
+// }
+
+// person1(12,123)
+
+// var name=require("./check");
+
+// console.log(__dirname);
+// console.log(__filename);
+// // console.log(require);
+// console.log(module);
+// console.log(name.a);
+
+// const a={
+//     name: "deependra",
+//     age:123
+// };
+
+// console.log(a.age);
+
+
+// var n="sdsak";
+// var p=123;
+// console.log('hi ho %s jsjvks %s nmkm',n,p);
+
+// class pser{
+//     constructor()
+//     {
+//         this.name="deepe";
+//         this.age=1234;
+//     }
+
+//     getname(){
+//         return this.name;
+//     }
+
+// };
+
+// var s=new pser();
+// console.log(s.getname);
+
+// creating server 
+/* var http=require('http');
+http.createServer(function(req,res){
+    res.writeHead(200,{'content-type':'text/html'});
+    res.write('deependra <h6>prajapati</h6>');
+    res.end();
+}).listen(3000,()=>console.log("server is running on 3000 port")); */
+
+//file system
+/*
+var fs=require('fs');
+fs.readFile('./note.text','utf-8',(err,data)=>{
+    if(err) throw err;
+    console.log(data);
+} );
+
+fs.unlink('./note.text',(err,data)=>{
+    if(err) throw err;
+    console.log('file daleted successfully');
+})
+*/
+
+
+// var fs=require('fs');
+// var http=require('http');
+// http.createServer(function(req,res){
+//     fs.readFile('./copy.txt','utf-8',(err,data)=>{
+//         // if(err) throw err;
+//         // console.log(data);
+   
+//     res.writeHead(200,{'content-type':'text/plain'});
+//     res.write(data);
+//     res.end();
+//       } );
+// }).listen(3000,()=>console.log("server is running on 3000 port"));
+
+
+// var fs=require('fs');
+// fs.writeFileSync('copy.txt',"text which your write in notes.txt")
+
+
+
+
+
+// // console.log(jsonbook);
+// // console.log(parseddata.title);
+
+// // fs.writeFileSync('note.txt',jsonbook);
+// const databuffer=fs.readFileSync('note.txt');
+// const jsondata=databuffer.toString();
+
+// var data=JSON.parse(jsondata);
+
+// data.title="do something good whic is better for others";
+// data.author="deependra";
+
+//  data=JSON.stringify(data);
+
+//  fs.writeFileSync('notes.txt',data);
+
+
+//for writing files or creating and writing
+// var fs=require('fs');
+// fs.writeFileSync('copy.txt',"text which your write in notes.txt")
+//var notes=require('./check');
+// console.log(c(2,5));
+// const validator=require('validator');
+// console.log(validator.isEmail("deependra@12.com"));
+// console.log(validator.isURL("http://www.gppcom"));
+//for printing text in console with different colors 
+// const chalk = require('chalk');
+// const log=console.log;
+// log(chalk.red('hello world'));
+// log(chalk.bold.green.inverse.red('deependra'));
+// console.log(process.argv);
+}
+
+
+/*##############################################################################################################################*/
+
+  #######BASICS WHICH I HAVE LEARNED #######
+
+ for run the node.js  file type node filename then hit enter in cmd
+
+* for making pakcage.json  (Javascript Object Notation) file -
+                                 we have to type npm init in cmd and press enter .
+*After that we have to install "validator.js" -
+                                  we have to type npm i validator@13.1.1(latest version) in cmd and press enter .
+// some packages
+validator-  
+                 //for validating many things like email,url etc          
+ const validator=require('validator');
+console.log(validator.isEmail("deependra@12.com")); // it returns ture or false
+console.log(validator.isURL("http://wwwgppcom"));   
+
+chalk -
+             //for printing text in console with different colors 
+const chalk = require('chalk');
+const log=console.log;
+log(chalk.red('hello world'));
+log(chalk.bold.underline('deependra'));
+
+nodemon -
+        //nodemon work is that it is automaticaly run once runned code when do changes and save that code it is saving our time.
+for installing it globally run the command npm i nodemon@2.0.4 -g  
+//  and for run the code with nodemon  type in cmd  =>    "nodemon filename"     and for terminating the running process  ctrl+c              
+
+#  console.log(process.argv);
+    argument vector contains  in |  index 0->where your node located |, in index  1-> location of that file which is running  | in index 2-> input which you have given from terminal
+
+
+ Yargs -
+          //yargs version  and help by typeing --help or --version
+        // yargs customize  the version  
+
+ const yargs=require('yargs');
+ yargs.version('12.0.12');
+console.log(yargs.argv);
+
+//create add command 
+yargs.command({
+    //name of the command 
+    command:"add",
+    //description what this does
+    describe:"add a new note",
+    builder:{
+        title:{
+            describe:"note title",
+            demandOption:true,
+            type:'string'
+        },
+        body:{
+            describe:"note body",
+            demandOption:true,
+            type:'string'
+        }
+    },
+    //this code will run on using add command
+    handler:function()
+    {
+       console.log('adding a new notes',argv.title,argv.body);
+    }
+});
+
+//create  remove command
+
+yargs.command({
+
+    command:'remove',
+    describe:"remove a note",
+    handler:function()
+    {
+        console.log('removing the note');
+    }
+
+})
+
+yargs.parse();
+
+
+storing data with json 
+
+const fs=require('fs');
+const book ={
+    title:"this is a baad thing",
+    author:"deepu"
+}
+// stringify takes object and  converts the object to the json string
+const jsonbook=JSON.stringify(book);
+//it converts the json string to the Object   ie. opposite of stringify
+const parseddata=JSON.parse(jsonbook);
+// fs.writeFileSync('note.txt',jsonbook);
+const databuffer=fs.readFileSync('note.txt');
+console.log(databuffer.toString());
+
+
+ File System=>
+           
+var fs=require('fs'); 
+fs.writeFileSync('notes.txt',"text which your write in notes.txt")
+fs.appendFileSync('notes.txt',"text which you want to append in notes.txt",'utf-8');
+
+
+
+
+/*##############################################################################################################################*/
